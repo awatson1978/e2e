@@ -18,5 +18,25 @@
     "sprintf-js": "^1.0.2",
     "underscore": "^1.7.0",
     "wd": "^0.3.10"
-  }
+  },
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "bin": {
+    "e2e": "run.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/meteor/e2e.git"
+  },
+  "bugs": {
+    "url": "https://github.com/meteor/e2e/issues"
+  },
+  "keywords": [
+    "end-to-end",
+    "testing",
+    "meteor",
+    "mocha",
+    "chai"
+  ]
 }

@@ -1,3 +1,5 @@
+#! /usr/local/bin/node
+
 var minimist = require('minimist');
 var options = minimist(process.argv.slice(2));
 
