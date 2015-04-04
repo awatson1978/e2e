@@ -4,7 +4,7 @@ var minimist = require('minimist');
 var options = minimist(process.argv.slice(2));
 
 if (options.help) {
-  console.log(require('fs').readFileSync('./usage', 'utf-8'));
+  console.log(require('fs').readFileSync('./README.md', 'utf-8'));
   process.exit(0);
 }
 
