@@ -1,3 +1,9 @@
+// override the default url if the env TEST_URL is specified
+var testURL = 'http://rainforest-auth-qa.meteor.com';
+if(process.env.TEST_URL){
+  testURL = process.env.TEST_URL;
+}
+
 describe('Password based login', function () {
 
   // these steps are sequential and stateful in nature, so stop
@@ -10,7 +16,7 @@ describe('Password based login', function () {
   var browserTestAccount;
 
   before(function () {
-    browser.get('http://rainforest-auth-qa.meteor.com');
+    browser.get(testURL);
     browser.wait('#login-sign-in-link', 30000);
     // cache browser test account
     browserTestAccount = browser.find('#browser-email').text();
@@ -20,7 +26,7 @@ describe('Password based login', function () {
   });
 
   it('should display correct UI elements', function () {
-    
+
     browser.find('#login-sign-in-link', 30000).click();
     browser.wait([
       '#login-email-label',

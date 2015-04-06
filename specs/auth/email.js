@@ -1,7 +1,19 @@
 var browserTestAccount;
+
 // var testURL = 'localhost:3000';
-var testURL = 'rainforest-auth-qa.meteor.com';
+// override the default url if the env TEST_URL is specified
+var testURL = 'http://rainforest-auth-qa.meteor.com';
+if(process.env.TEST_URL){
+  testURL = process.env.TEST_URL;
+}
+
+
 var emailLinkRegex = new RegExp('http:\\/\\/' + testURL + '\\/#\\/[a-zA-z-_\\d\\/]+');
+
+// override the default url if the env TEST_URL is specified
+if(process.env.TEST_URL){
+  testURL = process.env.TEST_URL;
+}
 
 // assert content on the first email in the list
 var assertEmail = function (options) {
@@ -13,7 +25,7 @@ var assertEmail = function (options) {
 
 // open a new window, and login with a different test account
 var openNewWindowAndLogin = function () {
-  browser.newWindow('http://' + testURL);
+  browser.newWindow(testURL);
   browser.focusSecondWindow();
   // IE opens a tiny new window which makes screenshots too small
   browser.setWindowSize(800, 600);
@@ -58,7 +70,7 @@ var closeSecondWindow = function () {
 describe('Auth Email -', function () {
 
   before(function () {
-    browser.get('http://' + testURL);
+    browser.get(testURL);
     browser.wait('#email-logs', 30000);
     // cache browser test account
     browserTestAccount = browser.find('#browser-email').text();
@@ -88,7 +100,7 @@ describe('Auth Email -', function () {
         to: browserTestAccount,
         subject: 'How to reset your password on ' + testURL,
         text: 'Hello, To reset your password, simply click the link below. ' +
-          'http://' + testURL + '/#/reset-password/'
+          testURL + '/#/reset-password/'
       });
     });
 
@@ -177,7 +189,7 @@ describe('Auth Email -', function () {
         to: browserTestAccount,
         subject: 'How to verify email address on ' + testURL,
         text: 'Hello, To verify your account email, simply click the link below. ' +
-          'http://' + testURL + '/#/verify-email/'
+          testURL + '/#/verify-email/'
       });
       signOut();
       assertSignedOut();
@@ -232,7 +244,7 @@ describe('Auth Email -', function () {
         to: browserTestAccount,
         subject: 'An account has been created for you on ' + testURL,
         text: 'Hello, To start using the service, simply click the link below. ' +
-          'http://' + testURL + '/#/enroll-account/'
+          testURL + '/#/enroll-account/'
       });
     });
 

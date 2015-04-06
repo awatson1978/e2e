@@ -1,3 +1,11 @@
+
+// override the default url if the env TEST_URL is specified
+var testURL = 'http://rainforest-auth-qa.meteor.com';
+if(process.env.TEST_URL){
+  testURL = process.env.TEST_URL;
+}
+
+
 var excludedPairs = [
   ['safari', 'github'],
   ['safari', 'meteor-developer'],
@@ -46,7 +54,7 @@ describe('A small app with accounts', function () {
   };
 
   before(function () {
-    browser.get('http://rainforest-auth-qa.meteor.com');
+    browser.get(testURL);
   });
 
   providersToRun().forEach(function (provider) {

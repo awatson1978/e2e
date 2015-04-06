@@ -44,12 +44,12 @@ var browserDescriptors = exports.browserDescriptors = {
   ie10: {
     browserName: 'internet explorer',
     version: 10,
-    platform: 'Windows 8'
+    platform: 'Platform.WIN_8'
   },
   ie11: {
     browserName: 'internet explorer',
     version: 11,
-    platform: 'Windows 8.1'
+    platform: 'Platform.WIN_8_1'
   }
 };
 

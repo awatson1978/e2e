@@ -3,11 +3,18 @@
 ## Running Tests
 
 ```
+
+
   Usage:
 
+    export NODE_PATH=/usr/local/lib/node_modules #make sure it's not empty
     export SAUCE_LABS_ACCESS_KEY=...    # Find values in 1Password under "e2e"
     export OAUTH_PROVIDERS_PASSWORD=...
     export OAUTH_PROVIDER_SECRETS=...
+    export TEST_URL=...
+    export SCREENSHOT_FILENAME_PREFIX=...
+
+    npm install -g
 
     node run [files ...] [--local] [--browsers=all] [--concurrency=5]
 
@@ -19,12 +26,16 @@
     --local         Run the tests against a local selenium server.
 
     --browsers      List of browsers to launch. Defaults to all browsers listed
-                    in `config.js`. You can also list individual browsers like 
-                    this: `--browsers=chrome,firefox`, or you can add your 
+                    in `config.js`. You can also list individual browsers like
+                    this: `--browsers=chrome,firefox`, or you can add your
                     custom list to `exports.browserLists` in `config.js`.
 
     --concurrency   Maximum number of browsers to launch at the same time. The
                     default is what we have on our SauceLabs account.
+
+  Examples:
+    meteor-e2e --local --browsers=firefox
+
 ```
 
 ## Test Authoring
@@ -69,4 +80,3 @@ There are several parts:
 - `lib/reporter.js`: where we react to test progress events emitted from child
   processes (e.g. print to console, send to server, etc.)
 - `config.js`: SauceLabs credentials, browser lists, etc.
-
