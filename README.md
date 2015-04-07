@@ -12,8 +12,9 @@
     export TEST_URL=...
     export SCREENSHOT_FILENAME_PREFIX=...
     export SOURCE_TESTS_DIR=...
-    
+
     # after copying the repository to your local drive
+    npm install .
     node run [files ...] [--local] [--browsers=all] [--concurrency=5]
 
     # to install it as a utility on your machine
@@ -36,7 +37,7 @@
                     #default is what we have on our SauceLabs account.
 
   # Examples:
-    meteor-e2e --local --browsers=firefox
+    SOURCE_TESTS_DIR="tests/e2e" meteor-e2e --local --browsers=firefox
 
 ```
 
