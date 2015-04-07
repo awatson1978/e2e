@@ -2,10 +2,8 @@
 
 ## Running Tests
 
-```
-
-
-  Usage:
+```sh
+  # Usage:
 
     export NODE_PATH=/usr/local/lib/node_modules #make sure it's not empty
     export SAUCE_LABS_ACCESS_KEY=...    # Find values in 1Password under "e2e"
@@ -13,27 +11,31 @@
     export OAUTH_PROVIDER_SECRETS=...
     export TEST_URL=...
     export SCREENSHOT_FILENAME_PREFIX=...
-
-    npm install -g
-
+    export SOURCE_TESTS_DIR=...
+    
+    # after copying the repository to your local drive
     node run [files ...] [--local] [--browsers=all] [--concurrency=5]
 
-  Options:
+    # to install it as a utility on your machine
+    npm install -g
+    meteor-e2e [files ...] [--local] [--browsers=all] [--concurrency=5]
 
-    files           Files to run in `specs/`. If it's a directory, will
-                    search all files recursively. Defaults to 'specs/'.
+  # Options:
 
-    --local         Run the tests against a local selenium server.
+    files           #Files to run in `specs/`. If it's a directory, will
+                    #search all files recursively. Defaults to 'specs/'.
 
-    --browsers      List of browsers to launch. Defaults to all browsers listed
-                    in `config.js`. You can also list individual browsers like
-                    this: `--browsers=chrome,firefox`, or you can add your
-                    custom list to `exports.browserLists` in `config.js`.
+    --local         #Run the tests against a local selenium server.
 
-    --concurrency   Maximum number of browsers to launch at the same time. The
-                    default is what we have on our SauceLabs account.
+    --browsers      #List of browsers to launch. Defaults to all browsers listed
+                    #in `config.js`. You can also list individual browsers like
+                    #this: `--browsers=chrome,firefox`, or you can add your
+                    #custom list to `exports.browserLists` in `config.js`.
 
-  Examples:
+    --concurrency   #Maximum number of browsers to launch at the same time. The
+                    #default is what we have on our SauceLabs account.
+
+  # Examples:
     meteor-e2e --local --browsers=firefox
 
 ```

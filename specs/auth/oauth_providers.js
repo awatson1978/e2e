@@ -7,6 +7,12 @@ if (!process.env.OAUTH_PROVIDERS_PASSWORD) {
 }
 var password = process.env.OAUTH_PROVIDERS_PASSWORD;
 
+// override the default url if the env TEST_URL is specified
+var testURL = 'http://rainforest-auth-qa.meteor.com';
+if(process.env.TEST_URL){
+  testURL = process.env.TEST_URL;
+}
+
 module.exports = [
   {
     name: 'github',
@@ -70,7 +76,7 @@ module.exports = [
       // if it's closed, it means we've successfully signed in; otherwise,
       // check the #allow button's value (it's an <input> tag, for whatever
       // reason!) - if it's "Authorize app" then we click it again, otherwise
-      // keep polling until popup closes. 
+      // keep polling until popup closes.
       while (true) {
         browser.sleep(1000);
         var windowCount = browser.windowHandles().length;
